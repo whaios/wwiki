@@ -1,6 +1,7 @@
 # wwiki theme for Ghost
 
 用于搭建个人 Wiki 的 Ghost 主题，主题样式参照 `gitbook` 系统。
+[访问作者博客](https://www.whai.me)
 
 ![wwiki](https://raw.githubusercontent.com/whaios/wwiki/master/assets/gitbook/gitbook.png)
 
