@@ -1,7 +1,7 @@
-# wwiki
+# wwiki theme for Ghost
 用于搭建个人 Wiki 的 Ghost 主题，主题样式参照 `gitbook` 系统。
 
-![wwiki]()
+![wwiki](https://raw.githubusercontent.com/whaios/wwiki/master/assets/gitbook/gitbook.png)
 
 # 主题特点
 
@@ -16,3 +16,8 @@
 1. 下载主题包 `wwiki` ，
 2. 通过 Ghost 后台的 `Design` -> `Upload a theme` 上传主题并启用
 3. 完成
+
+# 主题说明
+
+- 左侧目录树：通过 `Tag` 对文章进行分类，没有 `Tag` 的文章显示在目录树最下边
+- 首页：`Post Url` 为 `index` 的文章将显示到首页
