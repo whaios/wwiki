@@ -1,0 +1,13 @@
+{
+    "name": "wwiki",
+    "description": "使用 Ghost 搭建自己的个人 Wiki",
+    "version": "1.0.0",
+    "engines": {
+        "ghost": ">=1.0.0"
+    },
+    "license": "MIT",
+    "author": {
+        "name": "王海",
+        "email": "i@whai.me"
+    }
+}

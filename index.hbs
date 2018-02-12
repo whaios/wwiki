@@ -1,0 +1,10 @@
+{{!< default}}
+
+{{#get "posts" filter="slug:index" }}
+    {{#foreach posts}}
+        <section class="normal markdown-section">
+            {{content}}
+        </section>
+    {{/foreach}}
+{{/get}}
+
