@@ -1,4 +1,5 @@
 # wwiki theme for Ghost
+
 用于搭建个人 Wiki 的 Ghost 主题，主题样式参照 `gitbook` 系统。
 
 ![wwiki](https://raw.githubusercontent.com/whaios/wwiki/master/assets/gitbook/gitbook.png)
@@ -13,9 +14,11 @@
 
 # 如何使用
 
+1. 部署 Ghost 博客，不会的请参考《[部署Ghost1.20+博客](https://www.whai.me/install-ghost/)》
 1. 下载主题包 `wwiki` ，
 2. 通过 Ghost 后台的 `Design` -> `Upload a theme` 上传主题并启用
 3. 完成
+
 
 # 主题说明
 
