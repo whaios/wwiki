@@ -78,7 +78,7 @@
 
                 <!-- J-posts-all-hidden 所有文章列表，不显示在页面上 -->
                 <div id="J-posts-all-hidden" class="hidden">
-                  {{#get "posts" include="tags" order="published_at desc" }}
+                  {{#get "posts" include="tags" order="title" }}
                     {{#foreach posts}}
                       <!-- J-post 文章，data-slug 文章标识 -->
                       <li class="chapter J-post" data-slug="{{slug}}">
