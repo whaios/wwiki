@@ -2,16 +2,20 @@
 <html>
     <head>
         {{!-- Document Settings --}}
-        <meta charset="utf-8" />
+        <meta charset="UTF-8" />
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" /> {{!-- Page Meta --}}
-        <meta name="HandheldFriendly" content="True">
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+
         <title>{{meta_title}}</title>
 
-        <link rel="stylesheet" type="text/css" href="{{asset "css/search.css"}}">
-        <link rel="stylesheet" type="text/css" href="{{asset "gitbook/style.css"}}">
-        <link rel="stylesheet" type="text/css" href="{{asset "gitbook/website.css"}}">
-        <link rel="stylesheet" type="text/css" href="{{asset "plugin/prism.css"}}">
+        <link rel="stylesheet" type="text/css" href="{{asset "gitbook322/style.css"}}">
+        <link rel="stylesheet" type="text/css" href="{{asset "gitbook322/gitbook-plugin-highlight/website.css"}}">
+        <link rel="stylesheet" type="text/css" href="{{asset "gitbook322/gitbook-plugin-search/search.css"}}">
+        <link rel="stylesheet" type="text/css" href="{{asset "gitbook322/gitbook-plugin-fontsettings/website.css"}}">
         <style type="text/css">
           .hidden{
             display: none;
@@ -24,16 +28,7 @@
                 font-weight: 300;
                 text-align: center;
           }
-          .gitbook-link{
-            padding: 15px;
-            border-bottom: none;
-            color: #364149;
-            display: block;
-            border-top: 1px solid #dcdcdc;
-            margin-top: 10px;
-          }
         </style>
-
         {{!-- Ghost outputs important style and meta data with this tag --}}
         {{ghost_head}}
     </head>
@@ -73,6 +68,13 @@
                     <!-- J-untaged-posts 没有分类的文章列表 -->
                     <div class="J-untaged-posts"></div>
 
+                    <li class="divider"></li>
+
+                    <li>
+                      <a class="gitbook-link" target="blank" href="https://github.com/whaios/wwiki">
+                        本书使用 wwiki 发布
+                        </a>
+                    </li>
                   </ul>
                 </nav>
 
@@ -92,10 +94,6 @@
                     {{/foreach}}
                   {{/get}}
                 </div>
-
-                <div>
-                  <a class="gitbook-link" target="_blank" href="https://github.com/whaios/wwiki">本书使用 wwiki 发布</a>
-                </div>
             </div>
 
             <!-- 文章内容区域 -->
@@ -109,7 +107,7 @@
                         </h1>
                     </div>
 
-                    <div class="page-wrapper">
+                    <div class="page-wrapper" tabindex="-1" role="main">
                         <div class="page-inner">
                             <!-- class=open 显示查询结果，否则显示文章内容 -->
                             <div id="book-search-results">
@@ -126,14 +124,55 @@
 
                 </div>
             </div>
+
+            <script>
+                var gitbook = gitbook || [];
+                gitbook.push(function() {
+                    gitbook.page.hasChanged({
+                      "page":{
+                        "title":"{{meta_title}}"
+                        },
+                        "config":{
+                          "gitbook":"*",
+                          "theme":"default",
+                          "variables":{},
+                          "plugins":["livereload"],
+                          "pluginsConfig":{
+                            "livereload":{},
+                            "highlight":{},
+                            "search":{},
+                            "lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},
+                            "sharing":{
+                              "all":[]
+                            },
+                            "fontsettings":{"theme":"white","family":"sans","size":2},
+                            "theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},
+                            "structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},
+                            "pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/",
+                            "margin":{"right":62,"left":62,"top":56,"bottom":56}},
+                            "styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},
+                            "file":{
+                            },
+                            "gitbook":{"version":"3.2.3"},
+                            "basePath":".",
+                            "book":{"language":""}
+                      });
+                });
+            </script>
         </div>
 
+        <script type="text/javascript" src="{{asset "gitbook322/gitbook.js"}}"></script>
+        <script type="text/javascript" src="{{asset "gitbook322/theme.js"}}"></script>
+        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-livereload/plugin.js"}}"></script> --}}
+        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-search/search-engine.js"}}"></script> --}}
+        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-search/search.js"}}"></script> --}}
+        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-lunr/lunr.min.js"}}"></script> --}}
+        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-lunr/search-lunr.js"}}"></script> --}}
+        <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-sharing/buttons.js"}}"></script>
+        <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-fontsettings/fontsettings.js"}}"></script>
+
         <script type="text/javascript" src="{{asset "js/jquery-3.2.1.min.js"}}"></script>
-        <script type="text/javascript" src="{{asset "js/main.js"}}"></script>
         <script type="text/javascript" src="{{asset "js/blog-tree.js"}}"></script>
-        <script type="text/javascript" src="{{asset "gitbook/gitbook.js"}}"></script>
-        <script type="text/javascript" src="{{asset "gitbook/theme.js"}}"></script>
-        <script type="text/javascript" src="{{asset "gitbook/fontsettings.js"}}"></script>
         <script type="text/javascript" src="{{asset "plugin/prism.js"}}"></script>
         <script type="text/javascript" src="{{asset "plugin/jquery.ghosthunter.js"}}"></script>
         <script type="text/javascript" src="{{asset "js/search.js"}}"></script>

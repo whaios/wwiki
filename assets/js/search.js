@@ -4,7 +4,7 @@ $(function() {
 
     $searchInput.ghostHunter({
         results: ".search-results-list",
-        result_template: '<li class="search-results-item"><h3><a href="{{link}}">{{title}}</a></h3></li>',
+        result_template: '<li class="search-results-item"><h3><a href="{{link}}" target="_self">{{title}}</a></h3></li>',
         onComplete: function(results) {
             $('#book-search-results').addClass('open')
         }
