@@ -1,10 +1,86 @@
-{{!< default}}
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" /> {{!-- Page Meta --}}
+        <meta name="HandheldFriendly" content="true"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black">
+        <title>{{@blog.title}}</title>
+        <link rel="stylesheet" type="text/css" href="{{asset "index.css"}}" />
+        <link href='//fonts.googleapis.com/css?family=Open+Sans|Montserrat:700' rel='stylesheet' type='text/css'>
+        <link href="https://cdn.bootcss.com/animate.css/3.5.2/animate.min.css" rel="stylesheet">
+        {{!-- Ghost outputs important style and meta data with this tag --}}
+        {{ghost_head}}
+    </head>
 
-{{#get "posts" filter="slug:index" }}
-    {{#foreach posts}}
-        <section class="normal markdown-section">
-            {{content}}
-        </section>
-    {{/foreach}}
-{{/get}}
+    <body>
+        <div class="container">
+            <div class="sidebar">
+                <div class="header">
+                    <h1>{{@blog.title}}</h1>
+                    <h2></h2>
+                    <div class="quote">
+                        <p class="quote-text animate-init">{{{@blog.description}}}</p>
+                    </div>
+                </div>
 
+                <div class="menu">
+                    <strong class="animate-init">Books:</strong>
+                </div>
+
+                <div class="menu">
+                    {{#get "tags" limit="all" }}
+                      {{#foreach tags}}
+                        <a href="/{{slug}}" target="_self" class="animate-init" title="{{name}}">{{name}}</a>
+                      {{/foreach}}
+                    {{/get}}
+                </div>
+
+                {{!-- <div class="location">
+                    <i class="location-icon"></i>
+                    <span class="location-text animate-init">Suzhou,China</span>
+                </div> --}}
+            </div>
+
+        </div>
+        <div class="footer">
+            <a class="copyright" target="blank" href="https://github.com/whaios/wwiki">本书使用 wwiki 发布</a>
+        </div>
+        <script type="text/javascript" src="{{asset "js/jquery-3.2.1.min.js"}}"></script>
+        <script type="text/javascript">
+            $(document).ready(function () {
+                var delay =1;
+                var DELAY_STEP =200;
+                var animationOptions ={opacity:1,top:0};
+                $('h1').animate(animationOptions).promise()
+                    .pipe(animationBio)
+                    .pipe(animateMain)
+                    .pipe(animateLocationIcon);
+                function animationBio() {
+                    $('h2').animate(animationOptions);
+                }
+                function animateMain() {
+                    var dfd =$.Deferred();
+                    var els =$('.animate-init');
+                    var len =els.length;
+                    els.each(function (index,el) {
+                        delay++;$(el)
+                        .delay(index *DELAY_STEP)
+                        .animate(animationOptions);
+                        (len - 1 ===index) &&dfd.resolve();
+                    });
+                    return dfd.promise();
+                }
+                function animateLocationIcon() {
+                    $('.location-icon').delay(delay *DELAY_STEP)
+                    .animate({opacity:1,top:0})
+                    .promise().done();
+                }
+            });
+        </script>
+        
+        {{ghost_foot}}
+    </body>
+</html>
