@@ -41,83 +41,9 @@
                 </div>
 
                 <nav role="navigation">
-                  <ul class="summary" id="J-blog-tree">
-                    {{!-- 获取当前文章中第一个Tag --}}
-                    {{#foreach tags}}{{#if @first}}
-
-                        {{!-- 获取本书封面文章 --}}
-                        {{#get "posts" filter="slug:{{slug}}" as |post|}}
-                            {{#post}}
-                                <li><a class="custom-link" href="/{{slug}}">{{title}}</a></li>
-                                <li class="divider"></li>
-                            {{/post}}
-                        {{/get}}
-                        
-                        {{!-- 获取Tag下所有的文章 --}}
-                        <div id="J-posts-all-hidden" class="hidden">
-                        {{#get "posts" filter="tags:[{{slug}}]" order="title" }}
-                        {{#foreach posts}}
-                            <li class="chapter J-post" data-slug="{{slug}}">
-                                <a href="/{{slug}}/">{{title}}</a>
-                            </li>
-                        {{/foreach}}
-                        {{/get}}
-                        </div>
-                        {{!-- End 获取Tag下所有的文章 --}}
-
-                        <script>
-                            $(document).ready(function() {
-                                const $tagTree = $('#J-blog-tree')
-                                const $allPosts = $('#J-posts-all-hidden')
-                                const pathname = location.pathname
-
-                                const tags = {}
-                                const untaged = []
-                                $allPosts.find('.J-post').each(function() {
-                                    const $post = $(this)
-                                    const slug = $post.data('slug')
-
-                                    if (pathname.includes(slug)) {
-                                        $post.addClass('active')
-                                    }
-
-                                    if ($tags.length === 0) {
-                                        untaged.push($post[0].outerHTML)
-                                    } else {
-                                        $tags.each(function() {
-                                            const tag = this.innerText
-                                            if (!tags[tag]) {
-                                            tags[tag] = []
-                                            }
-
-                                            tags[tag].push($post[0].outerHTML)
-                                        })
-                                    }
-                                })
-
-                                /**
-                                * copy posts to corresponding tag
-                                */
-                                $tagTree.find('.J-blog-tree-posts').each(function() {
-                                    const $this = $(this)
-                                    const posts = tags[$this.data('tag')]
-
-                                    if (!posts) {
-                                    $this
-                                        .html('<ul><li class="blog-tree-no-posts lighter">内容维护中...</li></ul>')
-                                    return
-                                    }
-
-                                    $this.html(posts.join(''))
-                                })
-
-                                $untagedPosts.html(untaged.join(''))
-                            })
-                        </script>
-
-
-                    {{/if}}{{/foreach}}
-
+                  <ul class="summary">
+                    <div id="J-posts"></div>
+                    <div id="J-other-posts"></div>
                     <li class="divider"></li>
                     <li>
                       <a class="gitbook-link" target="blank" href="https://github.com/whaios/wwiki">
@@ -127,6 +53,22 @@
                   </ul>
                 </nav>
 
+                {{!-- 获取当前文章中第一个Tag --}}
+                {{#foreach tags}}{{#if @first}}
+                        
+                    {{!-- 获取Tag下所有的文章 --}}
+                    <div id="J-posts-hidden" class="hidden" data-slug="{{slug}}">
+                    {{#get "posts" filter="tags:[{{slug}}]" order="slug" }}
+                    {{#foreach posts}}
+                        <li class="chapter J-post" data-slug="{{slug}}">
+                            <a href="/{{slug}}/">{{title}}</a>
+                        </li>
+                    {{/foreach}}
+                    {{/get}}
+                    </div>
+                    {{!-- End 获取Tag下所有的文章 --}}
+
+                {{/if}}{{/foreach}}
             </div>
 
             <!-- 文章内容区域 -->

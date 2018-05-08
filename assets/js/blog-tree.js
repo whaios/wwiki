@@ -1,55 +1,46 @@
 $(document).ready(function() {
-  const $tagTree = $('#J-blog-tree')
-  const $allPosts = $('#J-posts-all-hidden')
+  const divider = '<li class="divider"></li>'
+  // 当前文章地址
   const pathname = location.pathname
-  const $body = $('body')
-  const $untagedPosts = $tagTree.find('.J-untaged-posts')
-  const $win = $(window)
+  const $allPosts = $('#J-posts-hidden')
+  const tagSlug = $allPosts.data('slug') 
+  var $jPosts = $('#J-posts')
+  var $jOtherPosts = $('#J-other-posts')
+  var curr = 0
 
-  const tags = {}
-  const untaged = []
   $allPosts.find('.J-post').each(function() {
-    const $post = $(this)
-    const slug = $post.data('slug')
-    const $tags = $post.find('.J-tag')
+      const $post = $(this)
+      const slug = $post.data('slug')
+      // 文章的序号，URL中第一个数字
+      var num = parseInt(slug)
 
-    // 如果文章是首页内容，则不添加到目录中
-    if (slug==='index')
-      return true
+      if (pathname.includes(slug)) {
+          $post.addClass('active')
+      }
 
-    if (pathname.includes(slug)) {
-      $post.addClass('active')
-    }
-
-    if ($tags.length === 0) {
-      untaged.push($post[0].outerHTML)
-    } else {
-      $tags.each(function() {
-        const tag = this.innerText
-        if (!tags[tag]) {
-          tags[tag] = []
-        }
-
-        tags[tag].push($post[0].outerHTML)
-      })
-    }
+      // 封面文章
+      if(slug === tagSlug){
+          $jPosts.prepend(divider);
+          $jPosts.prepend($post)
+      }
+      else if (!isNaN(num)) {
+          if(num > curr)
+              $jPosts.append($post)
+          else{
+              var $parent = $jPosts.children().last()
+              var $ulnodes = $parent.children("ul")
+              if($ulnodes.length < 1){
+                  $ulnodes.push($('<ul class="articles"></ul>'))
+                  $parent.append($ulnodes[0])
+              }
+              
+              $ulnodes[0].append($post)
+          }
+          curr = num;
+      } else {
+          if($jOtherPosts.children().length < 1)
+              $jOtherPosts.append(divider)
+          $jOtherPosts.append($post)
+      }
   })
-
-  /**
-   * copy posts to corresponding tag
-   */
-  $tagTree.find('.J-blog-tree-posts').each(function() {
-    const $this = $(this)
-    const posts = tags[$this.data('tag')]
-
-    if (!posts) {
-      $this
-        .html('<ul><li class="blog-tree-no-posts lighter">内容维护中...</li></ul>')
-      return
-    }
-
-    $this.html(posts.join(''))
-  })
-
-  $untagedPosts.html(untaged.join(''))
 })
