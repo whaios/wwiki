@@ -4,6 +4,8 @@
 [访问作者博客](https://www.whai.me)
 
 ![wwiki](https://raw.githubusercontent.com/whaios/wwiki/master/assets/gitbook.png)
+![wwiki](https://raw.githubusercontent.com/whaios/wwiki/master/assets/wwiki-home.png)
+![wwiki](https://raw.githubusercontent.com/whaios/wwiki/master/assets/wwiki-book.png)
 
 # 主题特点
 
