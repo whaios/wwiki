@@ -1,7 +1,7 @@
 {
     "name": "wwiki-books",
     "description": "使用 Ghost 搭建自己的个人 Wiki 文档库",
-    "version": "3.0.2",
+    "version": "3.0.3",
     "engines": {
         "ghost": ">=1.0.0"
     },

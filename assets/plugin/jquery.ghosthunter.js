@@ -29,7 +29,8 @@
         before              : false,
         onComplete          : false,
         includepages        : false,
-        filterfields        : false
+        filterfields        : false,
+        ghostQueryParams    : {limit: "all", include: "tags"}
     };
 
     var pluginMethods   = {
@@ -49,6 +50,7 @@
             this.onComplete         = opts.onComplete;
             this.includepages       = opts.includepages;
             this.filterfields       = opts.filterfields;
+            this.ghostQueryParams   = opts.ghostQueryParams;
 
             if ( opts.onPageLoad ) {
                 that.loadAPI();
@@ -84,7 +86,7 @@
 
             var index       = this.index,
                 blogData    = this.blogData;
-                obj         = {limit: "all",  include: "tags"};
+                obj         = this.ghostQueryParams;
 
 
             $.get(ghost.url.api('posts',obj)).done(function(data){
