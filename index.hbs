@@ -33,7 +33,10 @@
                 <div class="menu">
                     {{#get "tags" limit="all" }}
                       {{#foreach tags}}
-                        <a href="/{{slug}}" target="_self" class="animate-init" title="{{name}}">{{name}}</a>
+                        <a href="/{{slug}}" target="_self" class="animate-init" title="{{name}}">
+                            <i class="book-icon"></i>
+                            <span>{{name}}</span>
+                        </a>
                       {{/foreach}}
                     {{/get}}
                 </div>

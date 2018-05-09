@@ -164,6 +164,17 @@
     margin-left: 0;
   }
   
+  .menu .book-icon{
+    background: url("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAArUlEQVQ4T+3TTQ6BMRCH8Z/E1yGcwtKOxGEcQcROxA0cRsLO0ikcwldC+qYVqbLAUldt5z/PzHSmNV+uWvSfYxz3R6wwwh4dLDFEK2oWSZ8AZ9SzZDYYYI1+ZrugEe4S4FqoJECbOCVxpql83wGSvQS/+/4BP3zEMDyhZfkKj1zqQmhtNVSlSXyEvAI8TWIeeYJZDBAymMZzMcXSd2pjiy526OFQEqYSPv6TXwNunU8lEZ1sR+IAAAAASUVORK5CYII=")
+    no-repeat left bottom;
+    background-size: 16px;
+    width: 16px;
+    height: 16px;
+    background-size: 16px;
+    display: inline-block;
+    vertical-align: bottom;
+  }
+  
   .sidebar {
     margin: 0 auto;
     max-width: 500px;
