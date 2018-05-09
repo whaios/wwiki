@@ -58,7 +58,7 @@
                         
                     {{!-- 获取Tag下所有的文章 --}}
                     <div id="J-posts-hidden" class="hidden" data-slug="{{slug}}">
-                    {{#get "posts" filter="tags:[{{slug}}]" order="slug" }}
+                    {{#get "posts" filter="tags:[{{slug}}]" order="slug asc" }}
                     {{#foreach posts}}
                         <li class="chapter J-post" data-slug="{{slug}}">
                             <a href="/{{slug}}/">{{title}}</a>
