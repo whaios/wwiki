@@ -12,10 +12,9 @@
 
         <title>{{meta_title}}</title>
 
-        <link rel="stylesheet" type="text/css" href="{{asset "gitbook322/style.css"}}">
-        <link rel="stylesheet" type="text/css" href="{{asset "gitbook322/gitbook-plugin-highlight/website.css"}}">
-        <link rel="stylesheet" type="text/css" href="{{asset "gitbook322/gitbook-plugin-search/search.css"}}">
-        <link rel="stylesheet" type="text/css" href="{{asset "gitbook322/gitbook-plugin-fontsettings/website.css"}}">
+        <link rel="stylesheet" type="text/css" href="{{asset "gitbook/style.css"}}">
+        <link rel="stylesheet" type="text/css" href="{{asset "gitbook/gitbook-plugin-fontsettings/website.css"}}">
+        <link rel="stylesheet" type="text/css" href="{{asset "search.css"}}">
         <style type="text/css">
           .hidden{
             display: none;
@@ -108,52 +107,44 @@
                 var gitbook = gitbook || [];
                 gitbook.push(function() {
                     gitbook.page.hasChanged({
-                      "page":{
-                        "title":"{{meta_title}}"
+                        "page": {
+                            "title": "{{meta_title}}"
                         },
-                        "config":{
-                          "gitbook":"*",
-                          "theme":"default",
-                          "variables":{},
-                          "plugins":["livereload"],
-                          "pluginsConfig":{
-                            "livereload":{},
-                            "highlight":{},
-                            "search":{},
-                            "lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},
-                            "sharing":{
-                              "all":[]
-                            },
-                            "fontsettings":{"theme":"white","family":"sans","size":2},
-                            "theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},
-                            "structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},
-                            "pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/",
-                            "margin":{"right":62,"left":62,"top":56,"bottom":56}},
-                            "styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},
-                            "file":{
-                            },
-                            "gitbook":{"version":"3.2.3"},
-                            "basePath":".",
-                            "book":{"language":""}
-                      });
+                        "config": {
+                            "gitbook": "*",
+                            "theme": "default",
+                            "variables": {},
+                            "plugins": [],
+                            "pluginsConfig": {
+                                "highlight": {},
+                                "fontsettings": {
+                                    "theme": "white",
+                                    "family": "sans",
+                                    "size": 2
+                                }
+                            }
+                        },
+                        "file": {},
+                        "gitbook": {
+                            "version": "3.2.3"
+                        },
+                        "basePath": ".",
+                        "book": {
+                            "language": ""
+                        }
+                    });
                 });
             </script>
         </div>
 
-        <script type="text/javascript" src="{{asset "gitbook322/gitbook.js"}}"></script>
-        <script type="text/javascript" src="{{asset "gitbook322/theme.js"}}"></script>
-        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-livereload/plugin.js"}}"></script> --}}
-        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-search/search-engine.js"}}"></script> --}}
-        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-search/search.js"}}"></script> --}}
-        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-lunr/lunr.min.js"}}"></script> --}}
-        {{!-- <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-lunr/search-lunr.js"}}"></script> --}}
-        <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-sharing/buttons.js"}}"></script>
-        <script type="text/javascript" src="{{asset "gitbook322/gitbook-plugin-fontsettings/fontsettings.js"}}"></script>
+        <script src="{{asset "gitbook/gitbook.js"}}"></script>
+        <script src="{{asset "gitbook/theme.js"}}"></script>
+        <script src="{{asset "gitbook/gitbook-plugin-fontsettings/fontsettings.js"}}"></script>
 
-        <script type="text/javascript" src="{{asset "js/jquery-3.2.1.min.js"}}"></script>
-        <script type="text/javascript" src="{{asset "js/blog-tree.js"}}"></script>
-        <script type="text/javascript" src="{{asset "plugin/jquery.ghosthunter.js"}}"></script>
-        <script type="text/javascript" src="{{asset "js/search.js"}}"></script>
+        <script src="{{asset "js/jquery-3.2.1.min.js"}}"></script>
+        <script src="{{asset "js/blog-tree.js"}}"></script>
+        <script src="{{asset "plugin/jquery.ghosthunter.js"}}"></script>
+        <script src="{{asset "js/search.js"}}"></script>
 
         {{ghost_foot}}
     </body>
