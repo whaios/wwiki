@@ -9,7 +9,7 @@ $(document).ready(function() {
   var curr = 0
 
   $allPosts.find('.J-post').each(function() {
-      const $post = $(this)
+      var $post = $(this)
       const slug = $post.data('slug')
       // 文章的序号，URL中第一个数字
       var num = parseInt(slug)
@@ -29,12 +29,15 @@ $(document).ready(function() {
           else{
               var $parent = $jPosts.children().last()
               var $ulnodes = $parent.children("ul")
-              if($ulnodes.length < 1){
-                  $ulnodes.push($('<ul class="articles"></ul>'))
-                  $parent.append($ulnodes[0])
+              var $ulnode = {}
+              if($ulnodes.length > 0){
+                $ulnode = $($ulnodes[0])
               }
-              
-              $ulnodes[0].append($post)
+              else{
+                  $ulnode = $('<ul class="articles"></ul>')
+                  $parent.append($ulnode)
+              }              
+              $ulnode.append($post)
           }
           curr = num;
       } else {
